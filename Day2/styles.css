@@ -1,0 +1,83 @@
+.box {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+
+    
+}
+
+.animate {
+    transition: transform 1000ms;
+}
+
+.animate:hover {
+    transform: translateX(200px);
+}
+
+.spin {
+    margin: 50px;
+    animation-name: spin;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.relative {
+    position: relative;
+}
+
+.move {
+    background-color: green;
+    position: absolute;
+    animation-name: move;
+    animation-duration: 4s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@keyframes move {
+    0% {
+        top: 0px;
+        left: 0px;
+    }
+    25% {
+        top: 200px;
+        left: 0px;
+        background-color: aqua;
+    }
+    50% {
+        top: 200px;
+        left: 200px;
+        background-color: black;
+    }
+    75% {
+        top: 0px;
+        left: 200px;
+        background-color: blueviolet;
+    }
+    100% {
+        top: 0px;
+        left: 0px;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .box {
+        background-color: green;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .box {
+        background-color: blue;
+    }
+}
