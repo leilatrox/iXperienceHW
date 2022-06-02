@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Movie Guesser</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        <link href="styles.css" rel="stylesheet">
+    </head>
+    <body class = "bg-light">
+        <div class="card bg-secondary border border-dark m-5">
+            <h1 class="text-center bold mt-5 mb-2">Badly Explained Movies</h1>
+            <hr />
+            <div id="descr" class="text-center">
+                
+            </div>
+            <hr />
+            <div class="input-group mb-3">
+                <input id="input" type="text" class="form-control ms-3 me-3" placeholder="Enter Guess Here">
+            </div>
+            <button id="button" class="text-center btn btn-primary m-3">Submit</button>
+            <hr />
+            <button id="hintbut" class="text-center btn-secondary m-3">Show Hint</button>
+            <div id="hint" class="text-center mb-3"></div>
+            <div id="output" class="text-center ms-3 me-3 hide"></div>
+        </div>
+        
+        
+        <script src="script.js"></script>
+    </body>
+</html>
