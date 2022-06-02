@@ -1,0 +1,36 @@
+body {
+    background-color: black;
+}
+.box {
+    width: calc(33.333% - 10px);
+    height: 150px;
+    margin: 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 5px;
+    background-color: #343434;
+}
+.box2x {
+    width: calc(66.666% - 10px);
+}
+.blue {
+    background-color: blue;
+}
+.yellow {
+    background-color: yellow;
+}
+.green {
+    background-color: green;
+}
+.purple {
+    background-color: purple;
+}
+.red {
+    background-color: red;
+}
