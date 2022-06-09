@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import './App.css'
@@ -15,12 +15,12 @@ export default function App() {
   
   useEffect(() => {
     if (!tasks.length) {
-
+      onInitialLoad();
     }
   }, []);
 
   async function onInitialLoad() {
-    const tasks = TaskService.fetchTasks();
+    const tasks = await TaskService.fetchTasks();
     setTasks(tasks);
   }
 
@@ -38,14 +38,15 @@ export default function App() {
     await TaskService.updateTask(taskToToggle);
     //update tasks state
     setTasks(tasks.map((task) => {
-      return task.id === id ? taskToToggle : task
-    }))
+      return task.id === id ? taskToToggle : task;
+    }));
   }
 
   async function onTaskRemove(id) {
     //filter task with the id out
+    await TaskService.deleteTask(id);
     setTasks(tasks.filter((task) => task.id !== id));
-    TaskService.deleteTask(id);
+    
   }
   
   return (

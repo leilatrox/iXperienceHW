@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import 'bootstrap/dist/css/bootstrap.css'
 
 export default function Taskinput(props) {
   const [task, setTask] = useState('');
@@ -16,7 +15,7 @@ export default function Taskinput(props) {
         <div className="input-group mb-3">
           <input value={task} onChange={(e) => setTask(e.target.value)} 
             type="text" className="form-control" placeholder="Task"/>
-          <button className="btn btn-outline-secondary" type="submit" id="button-addon2">+</button>
+          <button className="btn btn-outline-secondary" type="submit">+</button>
         </div>
       </form> 
     </div>

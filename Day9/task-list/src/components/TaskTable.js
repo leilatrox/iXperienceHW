@@ -1,13 +1,10 @@
 import React from 'react'
-import 'bootstrap/dist/css/bootstrap.css'
 
 export default function TaskTable(props) {
 
-
-
   return (
     <div>
-      <table class="table">
+      <table className="table">
         <thead>
           <tr>
             <th>Task</th>

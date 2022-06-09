@@ -5,18 +5,19 @@ import {
   deleteDoc,
 } from 'firebase/firestore'
 
-import {firestore} from '../firebase/firebase';
+import {db} from '../firebase/firebase';
+import { Task } from '../models/task';
 
 class TaskService{
   constructor() {
     this.collection = 'tasks';
   }
   async createTask(task) {
-    const collRef = collection(firestore, this.collection);
+    const collRef = collection(db, this.collection);
 
     const docRef = await addDoc(collRef, {
       name: task.name,
-      complete: task.complete
+      complete: task.complete,
     });
 
     task.id = docRef.id;
@@ -24,7 +25,7 @@ class TaskService{
   }
 
   async fetchTasks() {
-    const collRef = collection(firestore, this.collection);
+    const collRef = collection(db, this.collection);
     const q = query(collRef);
     const queSnap = await getDocs(q);
 
@@ -40,7 +41,7 @@ class TaskService{
   }
 
   async updateTask(task) {
-    const docRef = doc(firestore, this.collection, task.id);
+    const docRef = doc(db, this.collection, task.id);
     await updateDoc(docRef, {
       name: task.name,
       complete: task.complete
@@ -49,7 +50,7 @@ class TaskService{
   }
 
   async deleteTask(taskId) {
-    const docRef = doc(firestore, this.collection, taskId);
+    const docRef = doc(db, this.collection, taskId);
     await deleteDoc(docRef);
   }
   
