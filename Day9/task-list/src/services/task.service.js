@@ -1,6 +1,8 @@
 import {
   collection, addDoc,
   query, getDocs,
+  doc, updateDoc,
+  deleteDoc,
 } from 'firebase/firestore'
 
 import {firestore} from '../firebase/firebase';
@@ -26,8 +28,31 @@ class TaskService{
     const q = query(collRef);
     const queSnap = await getDocs(q);
 
-    queSnap.docs;
+    const tasks = [];
+    queSnap.forEach((doc) => {
+      const data = doc.data();
+      const task = new Task(
+        doc.id, data.name, data.complete
+      );
+      tasks.push(task);
+    });
+    return tasks;
   }
+
+  async updateTask(task) {
+    const docRef = doc(firestore, this.collection, task.id);
+    await updateDoc(docRef, {
+      name: task.name,
+      complete: task.complete
+    });
+    return task;
+  }
+
+  async deleteTask(taskId) {
+    const docRef = doc(firestore, this.collection, taskId);
+    await deleteDoc(docRef);
+  }
+  
 }
 
 const service = new TaskService();

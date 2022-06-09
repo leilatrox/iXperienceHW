@@ -13,25 +13,39 @@ import { Task } from './models/task'
 export default function App() {
   const [tasks, setTasks] = useState([]);
   
-  function onTaskCreate(name) {
+  useEffect(() => {
+    if (!tasks.length) {
+
+    }
+  }, []);
+
+  async function onInitialLoad() {
+    const tasks = TaskService.fetchTasks();
+    setTasks(tasks);
+  }
+
+  async function onTaskCreate(name) {
     //create the task
-    const task = new Task(new Date().getTime(), name, false);
+    const task = await TaskService.createTask(new Task(null, name, false));
     //add the task to the tasks state
     setTasks([...tasks, task]);
   }
 
-  function onTaskCompleteToggle(id) {
+  async function onTaskCompleteToggle(id) {
     //toggle task's completed state
     const taskToToggle = tasks.find((task) => task.id === id);
     taskToToggle.complete = !taskToToggle.complete;
+    await TaskService.updateTask(taskToToggle);
     //update tasks state
-    setTasks(tasks.map((task) => 
-      {return task.id === id ? taskToToggle : task}))
+    setTasks(tasks.map((task) => {
+      return task.id === id ? taskToToggle : task
+    }))
   }
 
-  function onTaskRemove(id) {
+  async function onTaskRemove(id) {
     //filter task with the id out
     setTasks(tasks.filter((task) => task.id !== id));
+    TaskService.deleteTask(id);
   }
   
   return (
