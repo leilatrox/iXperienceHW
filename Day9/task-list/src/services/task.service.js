@@ -1,5 +1,6 @@
 import {
-  collection, addDoc
+  collection, addDoc,
+  query, getDocs,
 } from 'firebase/firestore'
 
 import {firestore} from '../firebase/firebase';
@@ -18,6 +19,14 @@ class TaskService{
 
     task.id = docRef.id;
     return task;
+  }
+
+  async fetchTasks() {
+    const collRef = collection(firestore, this.collection);
+    const q = query(collRef);
+    const queSnap = await getDocs(q);
+
+    queSnap.docs;
   }
 }
 
