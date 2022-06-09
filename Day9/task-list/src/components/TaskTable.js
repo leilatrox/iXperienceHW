@@ -1,0 +1,39 @@
+import React from 'react'
+import 'bootstrap/dist/css/bootstrap.css'
+
+export default function TaskTable(props) {
+
+
+
+  return (
+    <div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Task</th>
+            <th>Completed</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {props.tasks.map((task) =>
+            <tr key={task.id}>
+              <td>{task.name}</td>
+              <td>
+                  <div onClick={(e) => props.onTaskCompleteToggle(task.id)}>
+                      <i className={task.complete ? "bi bi-circle-fill" : "bi bi-circle"}></i>
+                  </div>
+              </td>
+              <td> 
+                  <div onClick={(e) => props.onTaskRemove(task.id)}>
+                      <i className="bi bi-trash"></i>  
+                  </div>
+                  
+              </td>
+            </tr>)
+          }
+        </tbody>
+      </table>
+    </div>
+  )
+}
