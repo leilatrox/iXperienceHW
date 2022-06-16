@@ -1,4 +1,4 @@
-import Button from "./Button"
+import Button from "./Button";
 
 export default function RecTable(props) {
   return (
@@ -13,20 +13,20 @@ export default function RecTable(props) {
           </tr>
         </thead>
         <tbody>
-          {props.recipes.map((recipe) =>
+          {props.recipes.map((recipe) => (
             <tr key={recipe.id}>
               <td>{recipe.name}</td>
               <td>{recipe.time}</td>
               <td>{recipe.description}</td>
-              <td> 
+              <td>
                 <Button onClick={(e) => props.onRecipeRemove(recipe.id)}>
-                  <i className="bi bi-trash"></i>  
+                  <i className="bi bi-trash"></i>
                 </Button>
               </td>
-            </tr>)
-          }
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
-  )
+  );
 }
